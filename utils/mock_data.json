@@ -1,0 +1,154 @@
+{
+  "users": [
+    {
+      "uid": 1,
+      "username": "duy",
+      "password": "123",
+      "role": "admin",
+      "subscription": "premium",
+      "active": true,
+      "logged_in": true,
+      "login_attempts": 0
+    },
+    {
+      "uid": 2,
+      "username": "duy1",
+      "password": "123",
+      "role": "viewer",
+      "subscription": "free",
+      "active": true,
+      "logged_in": true,
+      "login_attempts": 0
+    },
+    {
+      "uid": 3,
+      "username": "duy2",
+      "password": "123",
+      "role": "viewer",
+      "subscription": "premium",
+      "active": true,
+      "logged_in": false,
+      "login_attempts": 0
+    },
+    {
+      "uid": 4,
+      "username": "destiny",
+      "password": "123",
+      "role": "viewer",
+      "subscription": "free",
+      "active": true,
+      "logged_in": true,
+      "login_attempts": 0
+    },
+    {
+      "uid": 5,
+      "username": "destiny1",
+      "password": "123",
+      "role": "editor",
+      "subscription": "premium",
+      "active": true,
+      "logged_in": true,
+      "login_attempts": 0
+    },
+    {
+      "uid": 6,
+      "username": "destiny2",
+      "password": "123",
+      "role": "viewer",
+      "subscription": "free",
+      "active": true,
+      "logged_in": false,
+      "login_attempts": 0
+    },
+    {
+      "uid": 7,
+      "username": "mahdi",
+      "password": "123",
+      "role": "editor",
+      "subscription": "premium",
+      "active": false,
+      "logged_in": true,
+      "login_attempts": 0
+    },
+    {
+      "uid": 8,
+      "username": "mahdi1",
+      "password": "123",
+      "role": "viewer",
+      "subscription": "free",
+      "active": true,
+      "logged_in": false,
+      "login_attempts": 0
+    },
+    {
+      "uid": 9,
+      "username": "mahdi2",
+      "password": "123",
+      "role": "admin",
+      "subscription": "premium",
+      "active": true,
+      "logged_in": true,
+      "login_attempts": 0
+    },
+    {
+      "uid": 10,
+      "username": "ezequiel",
+      "password": "123",
+      "role": "viewer",
+      "subscription": "free",
+      "active": true,
+      "logged_in": false,
+      "login_attempts": 0
+    },
+    {
+      "uid": 11,
+      "username": "ezequiel1",
+      "password": "123",
+      "role": "editor",
+      "subscription": "premium",
+      "active": true,
+      "logged_in": true,
+      "login_attempts": 0
+    },
+    {
+      "uid": 12,
+      "username": "ezequiel2",
+      "password": "123",
+      "role": "viewer",
+      "subscription": "free",
+      "active": true,
+      "logged_in": false,
+      "login_attempts": 0
+    },
+    {
+      "uid": 13,
+      "username": "aariyana",
+      "password": "123",
+      "role": "editor",
+      "subscription": "premium",
+      "active": true,
+      "logged_in": true,
+      "login_attempts": 0
+    },
+    {
+      "uid": 14,
+      "username": "aariyana1",
+      "password": "123",
+      "role": "viewer",
+      "subscription": "free",
+      "active": true,
+      "logged_in": false,
+      "login_attempts": 0
+    },
+    {
+      "uid": 15,
+      "username": "aariyana2",
+      "password": "123",
+      "role": "admin",
+      "subscription": "premium",
+      "active": false,
+      "logged_in": true,
+      "login_attempts": 0
+    }
+  ]
+}
