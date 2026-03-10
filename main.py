@@ -19,6 +19,20 @@ def get_role_name(role):
         return role.value
     return str(role)
 
+def get_permissions(role):
+    role_name = get_role_name(role)
+
+    if role_name == "admin":
+        return [f.value for f in role_features.get(Role.ADMIN, [])]
+
+    if role_name == "editor":
+        return [f.value for f in role_features.get(Role.EDITOR, [])]
+
+    if role_name == "viewer":
+        return [f.value for f in role_features.get(Role.VIEWER, [])]
+
+    return []
+
 def generate_notification(user_dict):
 
     role = user_dict["role"].capitalize()
@@ -46,8 +60,8 @@ def is_user_eligible(user_dict):
     if user_dict["subscription"] not in ["free", "premium"]:
         return False, color_text("Skipped", YELLOW) + ": invalid subscription"
 
-    # if len(user_dict["permissions"]) == 0:
-    #     return False, color_text("Skipped", YELLOW) + ": no permissions"
+    if len(user_dict["permissions"]) == 0:
+        return False, color_text("Skipped", YELLOW) + ": no permissions"
 
     return True, "Eligible"
 
@@ -112,8 +126,9 @@ def main():
             "username": user.username,
             "active": user.active,
             "logged_in": user.logged_in,
-            "role": role,
-            "subscription": getattr(user, "subscription", "free")
+            "role": role,            
+            "subscription": getattr(user, "subscription", "free"),
+            "permissions": get_permissions(user.role)
         }
 
         eligible, status = is_user_eligible(user_dict)
