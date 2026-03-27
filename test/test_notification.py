@@ -13,7 +13,9 @@ class TestNotification(unittest.TestCase):
         # Arrange
         user_data = {
             "role": "admin",
-            "subscription": "free1"
+            "subscription": "free1",
+            "active": True,
+            "logged_in": True
         }
 
         # Act
