@@ -11,14 +11,17 @@ YELLOW = "\033[93m"
 BLUE = "\033[96m"
 RESET = "\033[0m"
 
+# add color to text
 def color_text(text, color):
     return color + text + RESET
 
+# get role name (handle enum or string)
 def get_role_name(role):
     if isinstance(role, Role):
         return role.value
     return str(role)
 
+# get permissions based on role
 def get_permissions(role):
     role_name = get_role_name(role)
 
@@ -33,8 +36,10 @@ def get_permissions(role):
 
     return []
 
+# create notification message
 def generate_notification(user_dict):
 
+    # get role and subscription
     role = user_dict["role"].capitalize()
     subscription = user_dict["subscription"]
 
@@ -46,32 +51,38 @@ def generate_notification(user_dict):
     return tier + " " + role + " notification was sent"
 
 
+# check if user can receive notification
 def is_user_eligible(user_dict):
-
+    # check active
     if user_dict["active"] == False:
         return False, color_text("Skipped", YELLOW) + ": inactive user"
 
+    # check login
     if user_dict["logged_in"] == False:
         return False, color_text("Skipped", YELLOW) + ": not logged in"
 
+    # check role
     if user_dict["role"] not in ["admin", "editor", "viewer"]:
         return False, color_text("Skipped", YELLOW) + ": invalid role"
 
+    # check subscription
     if user_dict["subscription"] not in ["free", "premium"]:
         return False, color_text("Skipped", YELLOW) + ": invalid subscription"
 
+    # check permissions
     if len(user_dict["permissions"]) == 0:
         return False, color_text("Skipped", YELLOW) + ": no permissions"
 
     return True, "Eligible"
 
 
+# try sending notification
 def send_notification(message):
 
     attempts = ["-", "-", "-"]
 
     for i in range(MAX_SEND_ATTEMPTS):
-
+        # Simulate random success or failure for sent attempts.
         success = random.choice([True, False])
 
         if success:
@@ -118,10 +129,12 @@ def main():
     data_service = DataServices()
     results = []
 
+    # loop through users
     for user in data_service.users:
 
         role = get_role_name(user.role)
 
+        # build user data dictionary
         user_dict = {
             "username": user.username,
             "active": user.active,
@@ -131,6 +144,7 @@ def main():
             "permissions": get_permissions(user.role)
         }
 
+        # check if user can receive notification
         eligible, status = is_user_eligible(user_dict)
 
         if eligible == False:
@@ -148,7 +162,7 @@ def main():
             }
 
         else:
-
+            # generate and send notification
             message = generate_notification(user_dict)
             attempts, final_message = send_notification(message)
 
@@ -169,7 +183,7 @@ def main():
     print("\n" + "=" * 140)
     print("SMART NOTIFICATION SYSTEM".center(140))
     print("=" * 140)
-
+    # print table header
     print(
         f"{'Username':<15}"
         f"{'Active':<10}"
@@ -183,7 +197,7 @@ def main():
     )
 
     print("-" * 140)
-
+    # print each row
     for row in results:
         print(
             f"{row['username']:<15}"
@@ -200,6 +214,17 @@ def main():
     print("=" * 140)
     print(color_text("\nSystem finished.", BLUE))
 
+    # generate_notification({
+    #     "role": "admin",
+    #     "subscription": "free1"
+    # })
 
+    # print(generate_notification({
+    #     "role": "admin",
+    #     "subscription": "premium",
+    #     "active": False,
+    #     "logged_in": False
+    # }))
+        
 if __name__ == "__main__":
     main()
