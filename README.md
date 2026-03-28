@@ -41,14 +41,12 @@ pytest --tb=line
 ### Test Failure
 
 ![Test Case 1](test/test1.png)  
-*Figure 1. The system correctly handles valid and invalid subscription types.*
 
 ---
 
 ### Test Success
 
 ![Test Case 2](test/test2.png)  
-*Figure 2. Notifications are not sent to inactive or logged-out users.*
 
 ## 4 Bug Fix Explanation  
 ---
