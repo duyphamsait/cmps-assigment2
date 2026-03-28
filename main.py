@@ -48,7 +48,7 @@ def get_permissions(role):
 #     else:
 #         tier = color_text("Free", GREEN)
 
-# FIX_BUG
+# - FIX_BUG - 
 def generate_notification(user_dict):
 
     # get role and subscription
