@@ -37,17 +37,51 @@ def get_permissions(role):
     return []
 
 # create notification message
+# def generate_notification(user_dict):
+
+#     # get role and subscription
+#     role = user_dict["role"].capitalize()
+#     subscription = user_dict["subscription"]
+
+#     if subscription == "premium":
+#         tier = color_text("Premium", BLUE)
+#     else:
+#         tier = color_text("Free", GREEN)
+
+#     return tier + " " + role + " notification was sent"
+
 def generate_notification(user_dict):
 
     # get role and subscription
-    role = user_dict["role"].capitalize()
-    subscription = user_dict["subscription"]
+    role = user_dict.get("role")
+    subscription = user_dict.get("subscription")
 
+    # check missing data
+    if role is None or subscription is None:
+        return "Invalid notification data"
+
+    # check if user is active
+    if not user_dict.get("active"):
+        return "User is not active"
+
+    # check if user is logged in
+    if not user_dict.get("logged_in"):
+        return "User must be logged in"
+
+    # check subscription is valid
+    if subscription not in ["free", "premium"]:
+        return "Invalid subscription"
+
+    # format role name
+    role = str(role).capitalize()
+
+    # choose message based on subscription
     if subscription == "premium":
         tier = color_text("Premium", BLUE)
     else:
         tier = color_text("Free", GREEN)
 
+    # return final message
     return tier + " " + role + " notification was sent"
 
 
